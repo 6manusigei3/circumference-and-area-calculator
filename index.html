@@ -16,12 +16,12 @@
       background-color: white;
       border: 1px solid #ccc;
       padding: 20px;
-      width: 300px;
+      width: 320px;
       margin: 0 auto;
       border-radius: 8px;
     }
 
-    input {
+    input, select {
       width: 90%;
       padding: 8px;
       margin-bottom: 10px;
@@ -50,8 +50,14 @@
 <body>
   <div class="container">
     <h2>Circle Calculator</h2>
-    <p>Enter the radius:</p>
+    <p>Enter the radius and select the unit:</p>
+
     <input type="number" id="radius" placeholder="Enter radius">
+    <br>
+    <select id="unit">
+      <option value="m">Meters (m)</option>
+      <option value="cm">Centimeters (cm)</option>
+    </select>
     <br>
     <button onclick="calculateCircle()">Calculate</button>
 
@@ -61,6 +67,7 @@
   <script>
     function calculateCircle() {
       const radius = parseFloat(document.getElementById("radius").value);
+      const unit = document.getElementById("unit").value;
       const resultDiv = document.getElementById("result");
 
       if (isNaN(radius) || radius <= 0) {
@@ -72,8 +79,8 @@
       const circumference = 2 * Math.PI * radius;   // C = 2πr
 
       resultDiv.innerHTML = `
-        <p><strong>Area:</strong> ${area.toFixed(2)}</p>
-        <p><strong>Circumference:</strong> ${circumference.toFixed(2)}</p>
+        <p><strong>Area:</strong> ${area.toFixed(2)} ${unit}²</p>
+        <p><strong>Circumference:</strong> ${circumference.toFixed(2)} ${unit}</p>
       `;
     }
   </script>
